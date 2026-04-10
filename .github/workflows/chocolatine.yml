@@ -5,7 +5,6 @@ on:
   pull_request:
 
 env:
-  MIRROR_SSH_URL: git@github.com:EpitechPGE1-2025/G-DOP-200-RUN-2-1-chocolatine-5.git
   EXECUTABLES: robot-factory
 
 jobs:
@@ -16,7 +15,7 @@ jobs:
     if: >-
       !startsWith(github.ref, 'refs/heads/no-ga/') &&
       !startsWith(github.head_ref, 'no-ga/') &&
-      github.event.repository.ssh_url != env.MIRROR_SSH_URL
+      github.event.repository.ssh_url != 'git@github.com:EpitechPGE1-2025/G-DOP-200-RUN-2-1-chocolatine-5.git'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -78,7 +77,7 @@ jobs:
     if: >-
       !startsWith(github.ref, 'refs/heads/no-ga/') &&
       !startsWith(github.head_ref, 'no-ga/') &&
-      github.event.repository.ssh_url != env.MIRROR_SSH_URL
+      github.event.repository.ssh_url != 'git@github.com:EpitechPGE1-2025/G-DOP-200-RUN-2-1-chocolatine-5.git'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -96,7 +95,7 @@ jobs:
     if: >-
       github.event_name == 'push' &&
       !startsWith(github.ref, 'refs/heads/no-ga/') &&
-      github.event.repository.ssh_url != env.MIRROR_SSH_URL
+      github.event.repository.ssh_url != 'git@github.com:EpitechPGE1-2025/G-DOP-200-RUN-2-1-chocolatine-5.git'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -106,5 +105,5 @@ jobs:
       - name: Mirror to Epitech repository
         uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_repo_url: ${{ env.MIRROR_SSH_URL }}
+          target_repo_url: 'git@github.com:EpitechPGE1-2025/G-DOP-200-RUN-2-1-chocolatine-5.git'
           ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
